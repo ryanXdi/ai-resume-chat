@@ -13,7 +13,7 @@ export default function App() {
     if (!selectedFile) return
     const formData = new FormData()
     formData.append('file', selectedFile)
-    await axios.post('http://127.0.0.1:8000/upload', formData)
+    await axios.post('https://ai-resume-chat-skql.onrender.com/upload', formData)
     setUploaded(true)
   }
 
@@ -29,7 +29,7 @@ export default function App() {
     setMessages(prev => [...prev, { role: 'user', text: userMessage }])
     setQuestion('')
     setLoading(true)
-    const res = await axios.post('http://127.0.0.1:8000/chat', { question: userMessage })
+    const res = await axios.post('https://ai-resume-chat-skql.onrender.com/chat', { question: userMessage })
     setMessages(prev => [...prev, { role: 'ai', text: res.data.answer }])
     setLoading(false)
   }
